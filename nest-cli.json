@@ -1,0 +1,19 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "projects": {
+    "seeder": {
+      "type": "application",
+      "root": "src",
+      "entryFile": "seeder",
+      "sourceRoot": "src"
+    }
+  },
+  "compilerOptions": {
+    "webpack": true,
+    "assets": [
+      "templates/**/*"
+    ],
+    "watchAssets": true
+  }
+}

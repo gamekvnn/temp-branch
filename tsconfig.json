@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "target": "ES2019",
+    "outDir": "dist",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "incremental": true,
+    "declaration": true,
+    "newLine": "lf",
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    },
+    "typeRoots": [
+      "./typings/*",
+    ],
+  },
+  "include": [
+    "src/**/*",
+    "typings/*",
+    "**/*.spec.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/dist/**"
+  ]
+}

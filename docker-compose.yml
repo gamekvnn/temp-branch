@@ -1,0 +1,21 @@
+services:
+  redis:
+    image: redis:6.2.5
+    restart: unless-stopped
+    command: --port 6380
+    ports:
+      - 6380:6380
+
+  api:
+    depends_on:
+      - redis
+    env_file:
+      - ./.env
+    image: landlord:latest
+    restart: on-failure
+    container_name: "landlord-api"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6380
+    ports:
+      - 5005:5005

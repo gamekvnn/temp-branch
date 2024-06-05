@@ -1,0 +1,16 @@
+import { Injectable } from '@nestjs/common';
+
+import { {{name}}Entity } from './repositories/entities';
+import { {{name}}Repository } from './repositories/{{dashCase name}}.repository';
+
+
+@Injectable()
+export class {{name}}Service {
+  constructor(
+    private readonly {{camelCase name}}Repository: {{name}}Repository,
+  ) {}
+
+  public async findById(id: string): Promise<{{name}}Entity | null> {
+    return this.{{camelCase name}}Repository.findOneById(id);
+  }
+}

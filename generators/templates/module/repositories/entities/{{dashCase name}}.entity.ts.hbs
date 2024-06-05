@@ -1,0 +1,27 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+
+import { DatabaseMongoObjectIdEntityAbstract } from '@/base/database/abstracts/mongo/entities';
+
+@Schema({ timestamps: true, versionKey: false, collection: '{{snakeCase name}}s' })
+export class {{name}}Entity extends DatabaseMongoObjectIdEntityAbstract {
+  @Prop({
+    unique: true,
+    trim: true,
+    required: true,
+  })
+  public key!: string;
+
+  @Prop({
+    type: String,
+  })
+  public value!: string;
+}
+
+export const {{name}}Schema = SchemaFactory.createForClass({{name}}Entity);
+
+export type {{name}}Document = {{name}}Entity & Document;
+
+{{name}}Schema.set('toJSON', {
+  virtuals: true,
+});
