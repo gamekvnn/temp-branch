@@ -17,6 +17,8 @@ import { CheckedUserPresenter } from '../presenters/checked-user.presenter';
 import { AuthUserGuard } from '../guards/auth.user.guard';
 
 import { UserService } from '@/modules/user/user.service';
+import { BadRequestException } from '@nestjs/common';
+import bcrypt from 'bcrypt';
 
 @ApiTags('modules.auth.user')
 @Controller({
@@ -44,8 +46,14 @@ export class AuthUserController {
     if (!foundUser) {
       throw new NotFoundException('User not found');
     }
+    const isPasswordValid = await bcrypt.compare(
+      loginUserDto.password,
+      foundUser.password,
+    );
 
-    // TODO: Verify password later
+    if (!isPasswordValid) {
+      throw new BadRequestException('Invalid phone number or password');
+    }
 
     const { accessToken } = await this.authService.generateToken({
       userId: foundUser._id.toString(),
