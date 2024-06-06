@@ -26,6 +26,11 @@ export class UserEntity extends DatabaseMongoObjectIdEntityAbstract {
     type: String,
   })
   public email?: string;
+
+  @Prop({
+    type: String,
+  })
+  public password!: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserEntity);
